@@ -16,9 +16,10 @@ public class consumer {
     public static void main(String[] args) throws Exception {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("test_consumer");
 
-        consumer.setNamesrvAddr("192.168.49.131:9876;192.168.49.132:9876");
+//        consumer.setNamesrvAddr("192.168.49.131:9876;192.168.49.132:9876");
+        consumer.setNamesrvAddr("192.168.79.130:9876");
         consumer.setVipChannelEnabled(false);
-//        consumer.setConsumeThreadMax(20);
+        consumer.setConsumeThreadMax(20);
         consumer.setConsumeMessageBatchMaxSize(10);
         consumer.subscribe("TopicProducerTest","*");
 
@@ -32,7 +33,7 @@ public class consumer {
                         String msgbody = new String(messageExt.getBody(),"utf-8");
                         String tags = messageExt.getTags();
                         System.out.println("收到消息："+"   topic:"+topic+"   ,tags:"+tags+"  ,msg:"+msgbody);
-
+                        System.out.println("线程为："+Thread.currentThread().getName());
                         /*if("Hello RocketMq4".equals(msgbody)){
                             System.out.println("=====失败消息开始=====");
                             System.out.println(msgbody);

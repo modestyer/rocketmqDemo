@@ -15,8 +15,9 @@ public class provider {
 
         DefaultMQProducer producer = new DefaultMQProducer("test_producer");
 
-        producer.setNamesrvAddr("192.168.49.131:9876;192.168.49.132:9876");
+//        producer.setNamesrvAddr("192.168.49.131:9876;192.168.49.132:9876");
 
+        producer.setNamesrvAddr("192.168.79.130:9876");
         producer.setRetryTimesWhenSendFailed(10);
         producer.setVipChannelEnabled(false);
         producer.start();
